@@ -1,0 +1,34 @@
+import React from 'react'
+import "./Product.css"
+
+function Star() {
+    return <span>&#x2B50;</span>; // Unicode character for the star emoji
+  }
+
+function Product() {
+  return (
+    <div className="product">
+      <div className="product__info">
+        <p>The lean startup</p>
+        <p className="product__price">
+            <small>$</small>
+            <strong>11.96</strong>
+        </p>
+        <div className="product__rating">
+            <p><Star /></p>
+            <p><Star /></p>
+            <p><Star /></p>
+        </div>
+      </div>
+
+      <img 
+      src="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg" 
+      alt=""
+      />
+
+      <button>Add to Basket</button>
+    </div>
+  )
+}
+
+export default Product
