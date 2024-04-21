@@ -1,7 +1,26 @@
 import React from 'react'
 import './CheckoutProduct.css'
+import { useStateValue } from './StateProvider';
+
+function Star() {
+  return <span>&#x2B50;</span>; // Unicode character for the star emoji
+}
 
 function CheckoutProduct({id, image, title, price, rating}) {
+
+  const[{ basket }, dispatch] = useStateValue();
+
+  const removeFromBasket = () => {
+    // remove the item from the basket
+    dispatch({
+      type: 'REMOVE_FROM_BASKET',
+      id: id,
+
+    })
+  }
+    
+    
+  
   return (
     <div className='checkoutProduct'>
       <img
@@ -16,13 +35,13 @@ function CheckoutProduct({id, image, title, price, rating}) {
             <strong>{price}</strong>
         </p>
         <div className="checkoutProduct__rating">
-            {Array(rating)
+        {Array(rating)
               .fill()
               .map((_, i) => (
               <p><Star /></p>
             ))}
         </div>
-        <button>Remove from basket</button>
+        <button onClick={removeFromBasket}>Remove from basket</button>
       </div>
     </div>
   )
